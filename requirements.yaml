@@ -9,3 +9,27 @@ collections:
   - name: geerlingguy.php_roles
     version: ">=0.9.3"
     # source: https://galaxy.ansible.com
+
+  # Built-in
+  - name: community.general
+    version: 5.5.0
+  - name: ansible.posix
+    version: 1.4.0
+  - name: ansible.utils
+    version: 2.6.1
+
+  # VMware vSphere
+  # community.vmware pulls in the vmware.vmware collection.
+  #
+  # We need it as not all modules are migrated over to the vmware.vmware
+  # collection.
+  - name: community.vmware
+    version: 5.0.1
+
+  # Red Hat
+  - name: freeipa.ansible_freeipa
+    version: 1.8.4
+  - name: redhat.openshift
+    version: 3.0.1
+  - name: redhat.satellite
+    version: 3.7.0

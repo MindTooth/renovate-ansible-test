@@ -31,7 +31,7 @@ collections:
     version: 1.8.4
   - name: redhat.openshift
     version: 3.0.1
-    source: https://console.redhat.com/api/automation-hub/content/published/
+    source: https://console.redhat.com/api/automation-hub/
   - name: redhat.satellite
     version: 3.7.0
-    source: https://console.redhat.com/api/automation-hub/content/published/
+    source: https://console.redhat.com/api/automation-hub/

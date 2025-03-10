@@ -17,8 +17,8 @@
   "packageRules": [
     {
       "matchDatasources": ["galaxy-collection"],
+      "matchPackageNames": ["/^redhat\\./"],
       "registryUrls": [
-        "https://galaxy.ansible.com/api",
         "https://console.redhat.com/api/automation-hub/content/published/"
       ]
     }

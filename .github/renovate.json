@@ -12,5 +12,15 @@
 
   "recreateWhen": "always",
 
-  "enabledManagers": ["ansible", "ansible-galaxy"]
+  "enabledManagers": ["ansible-galaxy"],
+
+  "packageRules": [
+    {
+      "matchDatasources": ["galaxy-collection"],
+      "registryUrls": [
+        "https://galaxy.ansible.com/api",
+        "https://console.redhat.com/api/automation-hub/content/published/"
+      ]
+    }
+  ]
 }

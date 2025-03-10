@@ -1,0 +1,21 @@
+---
+name: Refresh Automation Token
+
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron: "30 5,17 * * *"
+  workflow_dispatch:
+
+jobs:
+  refresh-token:
+    runs-on: ubuntu-latest
+    steps:
+      - run: >
+          curl https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token
+          -d grant_type=refresh_token
+          -d client_id="cloud-services"
+          -d refresh_token="${{ secrets.RH_HUB_TOKEN }}"
+          --fail --silent --show-error --output /dev/null

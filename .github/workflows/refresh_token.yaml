@@ -34,4 +34,4 @@ jobs:
           -H "Authorization: ${{ secrets.GH_FOR_MEND_IO_TOKEN }}" \
           -H 'Content-Type: application/json' \
           -H 'mend-appId: 1' \
-          -d $payload
+          -d "$payload"

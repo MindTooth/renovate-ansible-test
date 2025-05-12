@@ -6,7 +6,7 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
   schedule:
     # - cron: "0 6 */3 * *"
-    - cron: "*/10 * * * *" # Refresh Mend.io token
+    - cron: "*/12 * * * *" # Refresh Mend.io token
   workflow_dispatch:
 
 jobs:

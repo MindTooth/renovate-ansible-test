@@ -14,7 +14,7 @@ jobs:
     steps:
       - run: |
           response=$(curl -sS --fail \
-            -X POST https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token \
+            https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token \
             -d grant_type=refresh_token \
             -d client_id="cloud-services" \
             -d refresh_token="${{ secrets.RH_HUB_TOKEN }}")

@@ -13,23 +13,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-          response=$(curl https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token \
-          -d grant_type=refresh_token \
-          -d client_id="cloud-services" \
-          -d refresh_token="${{ secrets.RH_HUB_TOKEN }}" \
-          --fail --silent --show-error)
+          response=$(curl -sS --fail \
+            -X POST https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token \
+            -d grant_type=refresh_token \
+            -d client_id="cloud-services" \
+            -d refresh_token="${{ secrets.RH_HUB_TOKEN }}")
 
           token=$(echo $response | jq -r '.access_token')
 
           echo "::add-mask::$token"
 
-          curl -i -X PUT \
-          https://developer-api.mend.io/api/v1/repos/github/MindTooth/renovate-ansible-test/secrets/RH_AAP_TOKEN \
+          payload=$(jq -n --arg token "$token" '{
+            secretName: "RH_AAP_TOKEN",
+            secretValue: $token,
+            envVar: false
+          }')
+
+          curl -sS --fail \
+          -X PUT https://developer-api.mend.io/api/v1/repos/github/MindTooth/renovate-ansible-test/secrets/RH_AAP_TOKEN \
           -H "Authorization: ${{ secrets.GH_FOR_MEND_IO_TOKEN }}" \
           -H 'Content-Type: application/json' \
           -H 'mend-appId: 1' \
-          -d "$(jq -n --arg token "$token" '{
-            "secretName": "RH_AAP_TOKEN",
-            "secretValue": "$token",
-            "envVar": false
-          }')"
+          -d $payload

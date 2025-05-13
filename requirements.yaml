@@ -24,7 +24,7 @@ collections:
   # We need it as not all modules are migrated over to the vmware.vmware
   # collection.
   - name: community.vmware
-    version: 5.0.1
+    version: 5.6.0
 
   # Red Hat
   - name: freeipa.ansible_freeipa

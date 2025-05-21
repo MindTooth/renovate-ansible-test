@@ -28,7 +28,7 @@ collections:
 
   # Red Hat
   - name: freeipa.ansible_freeipa
-    version: 1.8.4
+    version: 1.14.7
   - name: redhat.openshift
     version: 3.0.1
     # source: https://console.redhat.com/api/automation-hub/content/published/
